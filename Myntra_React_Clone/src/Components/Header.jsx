@@ -4,15 +4,16 @@ import { IoIosHeart } from "react-icons/io";
 import { IoBagCheckOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+
 const Header = () => {
   const bag = useSelector((store) => store.Bag);
 
   return (
     <div>
-      {" "}
       <header>
         <div className="logo_container">
-          <Link href="/">
+          {/* Changed 'href' to 'to' for React Router consistency */}
+          <Link to="/">
             <img
               className="myntra_home"
               src="images/myntra_logo.webp"
@@ -29,9 +30,10 @@ const Header = () => {
           <a href="#">
             Studio <sup>New</sup>
           </a>
+          {/* Added the Contact Us link here */}
+         <Link className="nav_link" to="/contact">Contact</Link>
         </nav>
         <div className="search_bar">
-          {/* <span className="material-symbols-outlined search_icon">search</span> */}
           <input className="input" placeholder="Search For Products" />
         </div>
         <div className="action_bar">
