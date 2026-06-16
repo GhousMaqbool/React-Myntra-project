@@ -691,3 +691,141 @@ margin-top: 10px;
 .submit-btn:hover {
   background-color: #e63660;
 }
+
+/* =========================================
+   Mobile Responsiveness (max-width: 768px)
+   ========================================= */
+@media (max-width: 768px) {
+  /* Header Adjustments */
+  .nav_bar, .search_bar {
+    display: none !important;
+  }
+  .logo_container {
+    margin-left: 10px;
+  }
+  .action_bar {
+    margin-right: 10px;
+    gap: 15px;
+    min-width: unset;
+  }
+  .myntra_home {
+    height: 35px;
+  }
+
+  /* Product Grid Adjustments */
+  .category_heading {
+    margin: 30px 0 10px 15px;
+    font-size: 1.4em;
+  }
+  .category-items, .items-container {
+    width: 100%;
+    margin: 10px 0;
+    gap: 10px;
+    justify-content: center;
+  }
+  .item-container, .sale_item {
+    width: 45%;
+    margin: 0;
+  }
+  .item-image {
+    height: 200px;
+  }
+  .company, .company-name {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  .item-name {
+    font-size: 12px;
+  }
+  .price, .current-price, .price-container {
+    font-size: 13px;
+  }
+  .original-price, .discount, .discount-percentage {
+    font-size: 11px;
+  }
+  .btn-add-bag, .btn-bag {
+    font-size: 14px;
+    padding: 5px;
+  }
+
+  /* Bag (Cart) Page Adjustments */
+  .bag-page {
+    width: 95%;
+    margin-left: 2.5%;
+  }
+  .bag-items-container {
+    display: block;
+    width: 100%;
+    padding-right: 0;
+    border-right: none;
+    padding-top: 20px;
+  }
+  .bag-summary {
+    display: block;
+    width: 100%;
+    padding: 24px 0 0 0;
+  }
+  .item-left-part {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    background: transparent;
+  }
+  .item-right-part {
+    margin-left: 0;
+    min-height: auto;
+    padding-left: 0;
+  }
+  .bag-item-img {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    object-fit: contain;
+  }
+  .remove-from-cart {
+    top: 5px;
+    right: 10px;
+  }
+
+  /* Footer Adjustments */
+  .footer_container {
+    flex-direction: column;
+    padding: 30px 20px;
+    gap: 30px;
+  }
+  .footer_column {
+    align-items: flex-start;
+  }
+  .footer_column h3 {
+    margin-bottom: 15px;
+  }
+  .copyright {
+    text-align: center;
+  }
+
+  /* Contact Form Adjustments */
+  .con {
+    flex-direction: column;
+    align-items: center;
+  }
+  .Summary, .contact-container {
+    width: 100%;
+    padding: 10px;
+  }
+  .contact-main {
+    margin-top: 40px;
+  }
+  
+  /* Sliders and Hero Banner */
+  .slider-container {
+    width: 100%;
+  }
+  .slider-card {
+    flex: 0 0 50%; /* Show 2 cards on mobile */
+  }
+  .card {
+    min-width: 250px;
+    max-width: 250px;
+  }
+}
