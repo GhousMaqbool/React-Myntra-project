@@ -92,14 +92,7 @@ a.action_container:link {
     font-family: Assistant,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
     box-sizing: border-box;
 }
-header {
-    display: flex;
-    background-color: #ffffff;
-    height: 80px;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #b6b1b1;
-}
+/* header global styles removed to prevent conflicts with .site-header */
 .myntra_home {
     height: 45px;
 }
