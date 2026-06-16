@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
-import HeroBanner from "../components/layout/HeroBanner";
-import CategorySection from "../components/layout/CategorySection";
-import ProductGrid from "../components/product/ProductGrid";
+import HeroBanner from "../Components/layout/HeroBanner";
+import CategorySection from "../Components/layout/CategorySection";
+import ProductGrid from "../Components/product/ProductGrid";
 import ImageSlider from "../Components/ImageSlider";
 import { useProducts } from "../hooks/useProducts";
 import { useSearch } from "../context/SearchContext";

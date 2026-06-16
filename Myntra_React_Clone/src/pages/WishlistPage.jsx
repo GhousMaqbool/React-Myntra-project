@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { BsBag, BsHeart } from "react-icons/bs";
-import LoadingSpinner from "../components/common/LoadingSpinner";
-import EmptyState from "../components/common/EmptyState";
-import ErrorState from "../components/common/ErrorState";
+import LoadingSpinner from "../Components/common/LoadingSpinner";
+import EmptyState from "../Components/common/EmptyState";
+import ErrorState from "../Components/common/ErrorState";
 import { useWishlistContext } from "../context/WishlistContext";
 import { useCartContext } from "../context/CartContext";
 

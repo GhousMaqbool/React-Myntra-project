@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import LoadingSpinner from "../components/common/LoadingSpinner";
-import EmptyState from "../components/common/EmptyState";
-import ErrorState from "../components/common/ErrorState";
+import LoadingSpinner from "../Components/common/LoadingSpinner";
+import EmptyState from "../Components/common/EmptyState";
+import ErrorState from "../Components/common/ErrorState";
 import { useCartContext } from "../context/CartContext";
 
 const CONVENIENCE_FEE = 99;

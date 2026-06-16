@@ -1,5 +1,5 @@
-import HeroBanner from "../components/layout/HeroBanner";
-import ProductGrid from "../components/product/ProductGrid";
+import HeroBanner from "../Components/layout/HeroBanner";
+import ProductGrid from "../Components/product/ProductGrid";
 import { useProducts } from "../hooks/useProducts";
 
 const CATEGORY_META = {

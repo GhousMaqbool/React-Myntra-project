@@ -1,8 +1,8 @@
 import { useEffect, useState, useCallback } from "react";
 import { Link, useParams } from "react-router-dom";
 import { BsBag, BsHeart } from "react-icons/bs";
-import LoadingSpinner from "../components/common/LoadingSpinner";
-import ErrorState from "../components/common/ErrorState";
+import LoadingSpinner from "../Components/common/LoadingSpinner";
+import ErrorState from "../Components/common/ErrorState";
 import { fetchProductById } from "../services/productService";
 import { useCartContext } from "../context/CartContext";
 import { useWishlistContext } from "../context/WishlistContext";
