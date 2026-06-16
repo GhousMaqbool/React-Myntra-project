@@ -1,84 +1,91 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const fs = require('fs'); // Added to read items.json
-require('dotenv').config();
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
+const connectDB = require("./config/db");
+const errorHandler = require("./middleware/errorHandler");
+
+const productRoutes = require("./routes/productRoutes");
+const cartRoutes = require("./routes/cartRoutes");
+const wishlistRoutes = require("./routes/wishlistRoutes");
+const contactRoutes = require("./routes/contactRoutes");
+
+const Product = require("./models/Product");
+const { sendSuccess, sendError } = require("./utils/apiResponse");
+const asyncHandler = require("./middleware/asyncHandler");
 
 const app = express();
-app.use(cors());
-app.use(express.json());
+const PORT = process.env.PORT || 8080;
 
-// 1. Connection with Auto-Seeding Logic
-mongoose.connect(process.env.MONGO_URI)
-  .then(async () => {
-    console.log("Connected to MongoDB Atlas");
-    await seedIfEmpty(); // Run check every time server starts
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL || "*",
+    exposedHeaders: ["x-user-id"],
   })
-  .catch(err => console.error("Database error:", err));
+);
+app.use(express.json({ limit: "1mb" }));
+app.use(express.urlencoded({ extended: true }));
 
-// 2. Define the Schema
-const itemSchema = new mongoose.Schema({
-  id: String,
-  item_name: String,
-  original_price: Number,
-  current_price: Number,
-  discount_percentage: Number,
-  return_period: Number,
-  delivery_date: String,
-  rating: Object,
-  image: String,
-  company: String
+app.use("/images", express.static(path.join(__dirname, "..", "Myntra_React_Clone", "public", "images")));
+app.use("/FlipImages", express.static(path.join(__dirname, "..", "Myntra_React_Clone", "public", "FlipImages")));
+
+app.get("/health", (req, res) => {
+  res.status(200).json({ success: true, message: "Server is healthy" });
 });
 
-const Item = mongoose.model('Item', itemSchema);
-// Actual_backend/app.js
+app.use("/api/products", productRoutes);
+app.use("/api/cart", cartRoutes);
+app.use("/api/wishlist", wishlistRoutes);
+app.use("/api/contact", contactRoutes);
 
-const contactSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  message: String,
-  date: { type: Date, default: Date.now }
+app.post("/contact", asyncHandler(async (req, res) => {
+  const contactController = require("./controllers/contactController");
+  return contactController.createContact(req, res);
+}));
+
+app.get("/items", asyncHandler(async (req, res) => {
+  const products = await Product.find().sort({ createdAt: -1 });
+  const legacyItems = products.map((product) => ({
+    id: product.legacyId || product._id.toString(),
+    _id: product._id,
+    item_name: product.title,
+    company: product.brand,
+    current_price: product.price,
+    original_price: product.originalPrice,
+    discount_percentage: product.discount,
+    rating: product.rating,
+    image: product.images[0] || "",
+    images: product.images,
+    category: product.category,
+    return_period: product.returnPeriod,
+    delivery_date: product.deliveryDate,
+    description: product.description,
+    stock: product.stock,
+    sizes: product.sizes,
+  }));
+
+  return sendSuccess(res, 200, "Items fetched successfully", { items: legacyItems });
+}));
+
+app.use((req, res) => {
+  sendError(res, 404, `Route not found: ${req.method} ${req.originalUrl}`);
 });
 
-const Contact = mongoose.model('Contact', contactSchema);
+app.use(errorHandler);
 
-// 3. The Auto-Seed Function
-async function seedIfEmpty() {
+const startServer = async () => {
   try {
-    const count = await Item.countDocuments();
-    if (count === 0) {
-      console.log("Database is empty. Seeding data from items.json...");
-      const data = JSON.parse(fs.readFileSync('./items.json', 'utf-8'));
-      await Item.insertMany(data);
-      console.log("Seeding complete!");
-    } else {
-      console.log("Database already has data. Skipping seed.");
-    }
-  } catch (err) {
-    console.error("Seeding error:", err);
-  }
-}
-
-// 4. The API Route your Frontend calls
-app.get("/items", async (req, res) => {
-  try {
-    const items = await Item.find();
-    res.status(200).json({ items });
+    await connectDB();
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+      console.log("Run `npm run seed` to populate products if the database is empty.");
+    });
   } catch (error) {
-    res.status(500).json({ message: "Server Error" });
+    console.error("Failed to start server:", error.message);
+    process.exit(1);
   }
-});
+};
 
-app.listen(8080, () => console.log("Server running on port 8080"));
-// Actual_backend/app.js
+startServer();
 
-app.post("/contact", async (req, res) => {
-  try {
-    const { name, email, message } = req.body;
-    const newMessage = new Contact({ name, email, message });
-    await newMessage.save(); // This stores the message in MongoDB Atlas
-    res.status(201).json({ message: "Contact message saved!" });
-  } catch (error) {
-    res.status(500).json({ error: "Failed to save message" });
-  }
-});
+module.exports = app;

@@ -1,10 +1,7 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { nextImage, goToImage } from "./Store/ImageSliderSlice";
+import React, { useEffect, useState } from "react";
 
 const ImageSlider = () => {
-  const dispatch = useDispatch();
-  const currentIndex = useSelector((state) => state.slider.currentIndex);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const images = [
     "/images/emg1.webp",
@@ -33,17 +30,21 @@ const ImageSlider = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      dispatch(
-        nextImage({
-          totalImages: images.length,
-          step: step,
-          visibleCards: visibleCards,
-        })
-      );
-    }, 2000); // Adjust transition timing
+      setCurrentIndex((prevIndex) => {
+        const maxStartIndex = images.length - visibleCards;
+        if (prevIndex + step > maxStartIndex) {
+          return 0;
+        }
+        return prevIndex + step;
+      });
+    }, 2000);
 
     return () => clearInterval(interval);
-  }, [dispatch]);
+  }, [images.length, step, visibleCards]);
+
+  const goToImage = (index) => {
+    setCurrentIndex(index);
+  };
 
   // Total width of one card + margin
   const cardWidth = 190; // (180px + 10px gap)
@@ -87,7 +88,7 @@ const ImageSlider = () => {
         {Array.from({ length: totalSteps }).map((_, idx) => (
           <span
             key={idx}
-            onClick={() => dispatch(goToImage(idx * step))}
+            onClick={() => goToImage(idx * step)}
             style={{
               display: "inline-block",
               width: "10px",

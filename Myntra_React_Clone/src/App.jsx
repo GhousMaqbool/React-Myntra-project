@@ -1,24 +1,17 @@
-import Header from "./Components/Header";
-import Footer from "./Components/Footer";
-import { Outlet } from "react-router-dom";
-import FetchItems from "./Components/FetchItems";
-import { useSelector } from "react-redux";
-import Spinner from "./Components/Spinner";
+import { Navigate, Outlet } from "react-router-dom";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 
 function App() {
-  const FetchStatus = useSelector((store) => store.FetchStatus);
   return (
-    <>
-      <h1>
-        <Header />
-        <FetchItems />
-
-        {FetchStatus.CurrentlyFetching ? <Spinner /> : <Outlet />}
-
-        <Footer />
-      </h1>
-    </>
+    <div className="app-shell">
+      <Header />
+      <Outlet />
+      <Footer />
+    </div>
   );
 }
 
 export default App;
+
+export const LegacyBagRedirect = () => <Navigate to="/cart" replace />;
