@@ -4,96 +4,96 @@
       {
         "id": "001",
         "image": "images/1.jpg",
-        "company": "Carlton London",
-        "item_name": "Rhodium-Plated CZ Floral Studs",
-        "original_price": 1045,
-        "current_price": 606,
+        "company": "Tiffany & Co.",
+        "item_name": "Diamond Platinum Floral Stud Earrings",
+        "original_price": 5045,
+        "current_price": 2926,
         "discount_percentage": 42,
         "return_period": 14,
         "delivery_date": "10 Oct 2023",
-        "rating": { "stars": 4.5, "count": 1400 }
+        "rating": { "stars": 4.8, "count": 1400 }
       },
       {
         "id": "002",
         "image": "images/hoddie.webp",
-        "company": "Hoodies",
-        "item_name": "Soft, breathable, comfortable for everyday wear; can shrink if washed hot.",
-        "original_price": 2599,
-        "current_price": 1507,
+        "company": "The North Face",
+        "item_name": "Premium Heavyweight Cotton Hoodie",
+        "original_price": 4599,
+        "current_price": 2667,
         "discount_percentage": 42,
         "return_period": 14,
         "delivery_date": "10 Oct 2023",
-        "rating": { "stars": 4.3, "count": 24 }
+        "rating": { "stars": 4.6, "count": 240 }
       },
       {
         "id": "003",
         "image": "images/shirts.webp",
-        "company": "NUEVOSDAMAS",
-        "item_name": "Women Red & White Printed A-Line Knee-Length Skirts",
-        "original_price": 1599,
-        "current_price": 495,
+        "company": "Zara",
+        "item_name": "Floral Print Pleated Midi Skirt",
+        "original_price": 2599,
+        "current_price": 805,
         "discount_percentage": 69,
         "return_period": 14,
         "delivery_date": "10 Oct 2023",
-        "rating": { "stars": 4.1, "count": 249 }
+        "rating": { "stars": 4.3, "count": 249 }
       },
       {
         "id": "004",
         "image": "images/4.jpg",
         "company": "ADIDAS",
-        "item_name": "Indian Cricket ODI Jersey",
-        "original_price": 999,
-        "current_price": 999,
+        "item_name": "India Official World Cup Jersey 2024",
+        "original_price": 2999,
+        "current_price": 2999,
         "discount_percentage": 0,
         "return_period": 14,
         "delivery_date": "10 Oct 2023",
-        "rating": { "stars": 5, "count": 10 }
+        "rating": { "stars": 4.9, "count": 1050 }
       },
       {
         "id": "005",
         "image": "images/5.jpg",
-        "company": "Roadster",
-        "item_name": "Pure Cotton T-shirt",
+        "company": "Levi's",
+        "item_name": "Classic Batwing Logo Graphic T-Shirt",
         "original_price": 1399,
         "current_price": 489,
         "discount_percentage": 65,
         "return_period": 14,
         "delivery_date": "10 Oct 2023",
-        "rating": { "stars": 4.2, "count": 3500 }
+        "rating": { "stars": 4.5, "count": 3500 }
       },
       {
         "id": "006",
         "image": "images/6.jpg",
         "company": "Nike",
-        "item_name": "Men ReactX Running Shoes",
+        "item_name": "Air Zoom Pegasus 40 Running Shoes",
         "original_price": 14995,
         "current_price": 14995,
         "discount_percentage": 0,
         "return_period": 14,
         "delivery_date": "10 Oct 2023",
-        "rating": { "stars": 0, "count": 0 }
+        "rating": { "stars": 4.8, "count": 890 }
       },
       {
         "id": "007",
         "image": "images/71T+O83TLfL.jpg_BO30,255,255,255_UF900,850_SR1910,1000,0,C_QL100_.jpg",
-        "company": "HeadPhone",
-        "item_name": "Audonic Original Headphone",
-        "original_price": 1599,
-        "current_price": 639,
+        "company": "Sony",
+        "item_name": "WH-1000XM5 Wireless Noise Cancelling Headphones",
+        "original_price": 29999,
+        "current_price": 11999,
         "discount_percentage": 60,
-        "rating": { "stars": 4.2, "count": 388 }
+        "rating": { "stars": 4.9, "count": 3880 }
       },
       {
         "id": "008",
         "image": "images/8.jpg",
-        "company": "Nivea",
-        "item_name": "Men Fresh Deodrant 150ml",
-        "original_price": 285,
-        "current_price": 142,
+        "company": "Dior",
+        "item_name": "Sauvage Eau de Toilette 150ml",
+        "original_price": 12850,
+        "current_price": 6425,
         "discount_percentage": 50,
         "return_period": 14,
         "delivery_date": "10 Oct 2023",
-        "rating": { "stars": 4.2, "count": 5200 }
+        "rating": { "stars": 4.7, "count": 5200 }
       }
     ]
   ]

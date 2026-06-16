@@ -73,6 +73,7 @@ const seedProducts = async () => {
       const existing = await Product.findOne({ legacyId: payload.legacyId });
 
       if (existing) {
+        await Product.updateOne({ legacyId: payload.legacyId }, payload);
         skipped += 1;
         continue;
       }
